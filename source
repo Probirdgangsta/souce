@@ -20,6 +20,18 @@ local section2 = page:addSection("Section 2")
 section1:addToggle("Toggle", nil, function(value)
 print("Toggled", value)
 end)
+section2:addButton("Guards", function()
+local args = {
+    [1] = "Bright blue"
+}
+workspace.Remote.TeamEvent:FireServer(unpack(args))
+end)
+section2:addButton("Inmate", function()
+local args = {
+    [1] = "Bright orange"
+}
+workspace.Remote.TeamEvent:FireServer(unpack(args))
+end)
 section1:addButton("Destroy all Doors", function()
 game.workspace.Doors:Destroy()
 end)
@@ -63,10 +75,6 @@ end)
 section2:addSlider("JumpPower", 0, 0, 300, function(value)
 game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
 end)
-section2:addDropdown("Teams", {"Inmate", "World", "Hello World", "Word", 1, 2, 3}, function(text)
-
-end)
-
 -- second page
 local theme = bird:addPage("Theme", 5012544693)
 local colors = theme:addSection("Colors")
@@ -76,21 +84,6 @@ colors:addColorPicker(theme, color, function(color3)
     bird:setTheme(theme, color3)
 end)
 end
---third page
-local Teams = bird:addPage("Teams", 5012544693)
-local colors = Teams:addSection("Teams")
 
-Teams:addButton("Guards", function()
-local args = {
-    [1] = "Bright blue"
-}
-workspace.Remote.TeamEvent:FireServer(unpack(args))
-end)
-Teams:addButton("Inmate", function()
-local args = {
-    [1] = "Bright orange"
-}
-workspace.Remote.TeamEvent:FireServer(unpack(args))
-end)
 -- load
 bird:SelectPage(bird.pages[1], true)
