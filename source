@@ -76,6 +76,21 @@ colors:addColorPicker(theme, color, function(color3)
     bird:setTheme(theme, color3)
 end)
 end
+--third page
+local Teams = bird:addPage("Teams", 5012544693)
+local colors = Teams:addSection("Teams")
 
+Teams:addButton("Guards", function()
+local args = {
+    [1] = "Bright blue"
+}
+workspace.Remote.TeamEvent:FireServer(unpack(args))
+end)
+Teams:addButton("Inmate", function()
+local args = {
+    [1] = "Bright orange"
+}
+workspace.Remote.TeamEvent:FireServer(unpack(args))
+end)
 -- load
 bird:SelectPage(bird.pages[1], true)
